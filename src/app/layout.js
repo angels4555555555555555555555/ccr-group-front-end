@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "RCH Capital Holding GMBH",
+  title: "CCR Group GmbH",
   icons: {
     icon: '/logo.png',
   },

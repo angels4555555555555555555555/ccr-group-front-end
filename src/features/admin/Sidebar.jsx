@@ -40,7 +40,7 @@ const Sidebar = ({ openMenu, setOpenMenu }) => {
     <>
       {isAdminLoggingOut && <LoadingBackdrop />}
       <div
-        className={`w-full md:w-[250px] md:h-[calc(100dvh-104px)] bg-black md:border-t md:border-[#545454] p-4 ${
+        className={`w-full md:w-[250px] md:h-[calc(100dvh-104px)] overflow-y-auto bg-black md:border-t md:border-[#545454] p-4 ${
           openMenu ? "h-fit absolute top-[97px] z-10" : "hidden"
         } md:block`}
       >
@@ -56,7 +56,7 @@ const Sidebar = ({ openMenu, setOpenMenu }) => {
                 key={fullPath}
                 href={fullPath}
                 onClick={() => setOpenMenu(false)}
-                className={`flex items-center p-[8.5px_12px] gap-3 rounded-md px-2 py-2 hover:bg-[#111] w-fit md:w-full ${
+                className={`flex items-center p-[8.5px_12px] gap-3 rounded-md px-2 py-2 hover:bg-[#111] w-full ${
                   isActive
                     ? "bg-[rgba(246,247,250,0.2)] border-1 border-[#6e7179]"
                     : ""

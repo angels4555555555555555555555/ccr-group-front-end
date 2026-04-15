@@ -27,7 +27,8 @@ export default function Page() {
         if (data?.klarnaPrice) {
             form.setFieldValue("price", String(data.klarnaPrice));
         }
-    }, [data, form]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data]);
 
     const { mutate: updateKlarna, isPending: isUpdating } = useUpdateKlarna(() => {
         queryClient.invalidateQueries(["klarna"]);
