@@ -11,13 +11,14 @@ const Impressum = () => {
         <div className="text-4xl">CCR Group GmbH</div>
         <p>Adresse:</p>
         <p>Sankt Michael 29</p>
-        <p>91056 Erlangen</p>
+        <p>91056 Munich</p>
         <p>Deutschland</p>
         <br />
         <p>Zweigniederlassung</p>
         <br />
-        <p>Potsdamer Str. 2,</p>
-        <p>10785 Berlin,</p>
+        <p>Feringastraße 4, </p>
+        <p>85774 Unterföhring,</p>
+        <p>Unterföhring, Landkreis München,</p>
         <p>Deutschland</p>
         <p className="mt-10">Telefon:</p>
         <p>030519994482</p>

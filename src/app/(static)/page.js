@@ -43,7 +43,7 @@ export default function Home() {
         copy={
           <>
             <p>
-              Mit der Gründung am 04.10.2021 in Erlangen haben wir uns als spezialisierter Finanzberater mit klarem Fokus auf Kapitalmarktstrategien und Börsengänge (IPOs) positioniert. Unser Hauptsitz in Erlangen, Deutschland, bildet das strategische Zentrum unserer Unternehmensberatung und Strukturierung von Kapitalmarktprojekten.
+              Mit der Gründung am 04.10.2021 in Munich haben wir uns als spezialisierter Finanzberater mit klarem Fokus auf Kapitalmarktstrategien und Börsengänge (IPOs) positioniert. Unser Hauptsitz in Munich, Deutschland, bildet das strategische Zentrum unserer Unternehmensberatung und Strukturierung von Kapitalmarktprojekten.
             </p>
             <p>
               Als Teil einer größeren Holding, die an zahlreichen Unternehmen beteiligt ist und aktiv Start-ups sowie Wachstumsunternehmen fördert, liegt unser wirtschaftlicher Schwerpunkt dort, wo nachhaltige Wertschöpfung entsteht: am Kapitalmarkt. Insbesondere die strukturierte Vorbereitung und Begleitung von Unternehmen bis zum Börsengang stellt den zentralen Hebel für Wachstum und Ertragssteigerung dar.
