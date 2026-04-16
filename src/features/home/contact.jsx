@@ -6,7 +6,7 @@ export default function Contact() {
         <p className="text-muted-foreground text-lg font-light">
           Sankt Michael 29,
           <br />
-          91056 Erlangen
+          91056 Munich
           <br />
           Deutschland
           <br />
@@ -14,8 +14,9 @@ export default function Contact() {
           Zweigniederlassung
           <br />
           <br />
-          <p>Potsdamer Str. 2,</p>
-          <p>10785 Berlin,</p>
+          <p>Feringastraße 4, </p>
+          <p>85774 Unterföhring,</p>
+          <p>Unterföhring, Landkreis München,</p>
           <p>Deutschland</p>
           <br />
           CCR Group GmbH
