@@ -76,7 +76,7 @@ export default function AdminLoginPage() {
                      backdrop-blur-[5.5px]"
           >
             <h2 className="text-white font-bold lg:text-[36px]/[130%] text-[24px]/[130%]">
-              RCH Capital Holding GMBH Admin
+              CCR Group GmbH Admin
             </h2>
             <p className="mt-5 lg:text-[18px]/[150%] text-[#BDBDBD] mb-6">
               Melden Sie sich bei Ihrem Konto an

@@ -8,7 +8,7 @@ const Impressum = () => {
       <Header />
       <HeroSection />
       <div className="max-w-5xl mx-auto px-4 text-3xl font-light text-center mt-24">
-        <div className="text-4xl">RCH Capital Holding GMBH</div>
+        <div className="text-4xl">CCR Group GmbH</div>
         <p>Adresse:</p>
         <p>Sankt Michael 29</p>
         <p>91056 Erlangen</p>
@@ -22,7 +22,7 @@ const Impressum = () => {
         <p className="mt-10">Telefon:</p>
         <p>030519994482</p>
         <p className="mt-10">E-Mail:</p>
-        <p>info@rch-capital-holding.com</p>
+        <p>info@ccr-group.com</p>
         <p className="mt-10">Registergericht:</p>
         <p>Amtsgericht Führt HRB 20838</p>
         <p className="mt-10">Vertreten durch den Geschäftsführer:</p>

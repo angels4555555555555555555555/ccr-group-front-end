@@ -63,7 +63,7 @@ export default function Header() {
         <Link href="/" onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}>
           <img
             src="/logo.png"
-            alt="RCH Capital Holding GMBH Logo"
+            alt="CCR Group GmbH Logo"
             className="w-25 h-auto transition-transform"
           />
         </Link>

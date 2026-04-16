@@ -41,7 +41,7 @@ export default function Footer() {
               </svg>
               <span className="font-bold">E-Mail</span>
               <p className="text-gray-600 text-base">
-                info@rch-capital-holding.com
+                info@ccr-group.com
               </p>
             </div>
           </div>
