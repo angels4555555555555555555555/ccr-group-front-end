@@ -23,7 +23,7 @@ export default function Contact() {
         </p>
         <div className="mt-4 space-y-8 text-muted-foreground text-lg font-light">
           <p>030519994482</p>
-          <p>info@ccr-group.com</p>
+          <p>info@ccrgroupgmbh.com</p>
         </div>
       </div>
 

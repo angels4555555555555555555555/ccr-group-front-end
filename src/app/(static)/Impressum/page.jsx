@@ -23,7 +23,7 @@ const Impressum = () => {
         <p className="mt-10">Telefon:</p>
         <p>030519994482</p>
         <p className="mt-10">E-Mail:</p>
-        <p>info@ccr-group.com</p>
+        <p>info@ccrgroupgmbh.com</p>
         <p className="mt-10">Registergericht:</p>
         <p>Amtsgericht Führt HRB 20838</p>
         <p className="mt-10">Vertreten durch den Geschäftsführer:</p>
