@@ -1,10 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { MantineProvider } from '@mantine/core';
-import { DatesProvider } from '@mantine/dates';
-import { Toaster } from 'sonner';
-import '@mantine/core/styles.css';
-import '@mantine/dates/styles.css';
+import { MantineProvider } from "@mantine/core";
+import { DatesProvider } from "@mantine/dates";
+import { Toaster } from "sonner";
+import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
 import QueryProvider from "../providers/QueryProvider";
 
 const geistSans = Geist({
@@ -20,20 +20,20 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "CCR Group GmbH",
   icons: {
-    icon: '/logo.png',
+    icon: "/logo2.png",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body 
+      <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
         <MantineProvider withGlobalStyles withNormalizeCSS>
           <QueryProvider>
-            <DatesProvider settings={{ locale: 'en', firstDayOfWeek: 0 }}>
+            <DatesProvider settings={{ locale: "en", firstDayOfWeek: 0 }}>
               {children}
             </DatesProvider>
           </QueryProvider>

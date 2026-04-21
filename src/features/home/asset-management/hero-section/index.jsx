@@ -3,12 +3,12 @@ const AssetManagementHeroSection = () => {
     <div
       className={`flex flex-col gap-8 md:gap-12 justify-center items-center min-h-[96vh] text-white hero-image px-8`}
     >
-      <h1 className="text-3xl md:text-6xl text-center font-light">
+      <h1 className="text-3xl md:text-6xl text-center font-light text-[#931A1D]">
         Vermögensverwaltung
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <a href="#footer">
-          <button className="bg-[#5639A5] w-full text-white rounded-lg p-[5px_20px] h-[42px]">
+          <button className="bg-[#931A1D] w-full text-white rounded-lg p-[5px_20px] h-[42px]">
             Rufen sie uns an
           </button>
         </a>

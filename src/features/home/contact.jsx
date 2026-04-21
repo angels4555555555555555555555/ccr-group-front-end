@@ -75,7 +75,7 @@ export default function Contact() {
           <label className="inline-flex items-center gap-2 text-sm text-muted-foreground">
             <input
               type="checkbox"
-              className="size-4 border border-input border-gray-500"
+              className="size-4 border border-input border-gray-500 cursor-pointer"
             />
             Ich stimme der Verarbeitung zu.
           </label>
@@ -83,7 +83,7 @@ export default function Contact() {
         <div className="mt-4">
           <button
             type="button"
-            className="px-5 py-3 rounded-md bg-primary text-primary-foreground hover:opacity-90 transition bg-[#5639A5] w-full text-white"
+            className="px-5 py-3 rounded-md bg-primary text-primary-foreground hover:opacity-90 cursor-pointer transition bg-[#931A1D] w-full text-white"
           >
             Absenden
           </button>

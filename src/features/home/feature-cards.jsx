@@ -27,7 +27,7 @@ export default function FeatureCards() {
               fill-rule="evenodd"
               clip-rule="evenodd"
               d="M4.13922 0H20.8537L15.2986 14.6203L25 14.5941L5.94869 42L10.4786 21.8304L0 21.8233L4.13922 0Z"
-              fill="#5639A5"
+              fill="#931A1D"
             />
           </svg>
         }
@@ -48,7 +48,7 @@ export default function FeatureCards() {
               fill-rule="evenodd"
               clip-rule="evenodd"
               d="M4.13922 0H20.8537L15.2986 14.6203L25 14.5941L5.94869 42L10.4786 21.8304L0 21.8233L4.13922 0Z"
-              fill="#5639A5"
+              fill="#931A1D"
             />
           </svg>
         }
@@ -69,7 +69,7 @@ export default function FeatureCards() {
               fill-rule="evenodd"
               clip-rule="evenodd"
               d="M4.13922 0H20.8537L15.2986 14.6203L25 14.5941L5.94869 42L10.4786 21.8304L0 21.8233L4.13922 0Z"
-              fill="#5639A5"
+              fill="#931A1D"
             />
           </svg>
         }

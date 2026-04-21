@@ -91,7 +91,7 @@ const Page = () => {
                   onClick={() => {
                     if (!resetEmail) {
                       toast.error(
-                        "Nichts zu kopieren – bitte geben Sie eine E-Mail-Adresse ein."
+                        "Nichts zu kopieren – bitte geben Sie eine E-Mail-Adresse ein.",
                       );
                       return;
                     }
@@ -113,7 +113,32 @@ const Page = () => {
       </Modal>
 
       <div className="flex flex-col md:flex-row relative min-h-screen">
-        <img src="/logo.png" alt="Logo" className="absolute w-20 top-0 md:top-3 left-3 md:left-10 z-1" />
+        {/* Back to home button  */}
+        <button
+          type="button"
+          className="absolute flex items-center gap-1 top-2 left-2 md:top-3 md:left-10 z-10 px-2 py-1 md:px-3 md:py-2 bg-white/80 hover:bg-white text-black  shadow transition-all cursor-pointer border border-gray-200"
+          onClick={() => router.push("/")}
+          aria-label="Zur Startseite"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-5 h-5 md:w-6 md:h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+          <span className="font-semibold hidden sm:inline">
+            <span className="hidden md:inline">Zurück nach Hause</span>
+            <span className="md:hidden">Zurück</span>
+          </span>
+        </button>
 
         <div className="md:flex h-screen lg:w-[45.833%] hidden md:w-[50%] w-full items-center justify-center">
           <img

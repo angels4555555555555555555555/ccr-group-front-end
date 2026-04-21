@@ -51,8 +51,32 @@ export default function AdminLoginPage() {
           priority
         />
 
-        {/* Logo */}
-        <img src="/logo.png" className="w-20 absolute top-6 lg:absolute lg:left-[77px] text-white lg:top-6" />
+        {/* Back to Home Button */}
+        <button
+          type="button"
+          className="absolute flex items-center gap-1 top-2 left-2 md:top-3 md:left-10 z-10 px-2 py-1 md:px-3 md:py-2 bg-white/80 hover:bg-white text-black  shadow transition-all cursor-pointer border border-gray-200"
+          onClick={() => router.push("/")}
+          aria-label="Zur Startseite"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-5 h-5 md:w-6 md:h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+          <span className="font-semibold hidden sm:inline">
+            <span className="hidden md:inline">Zurück nach Hause</span>
+            <span className="md:hidden">Zurück</span>
+          </span>
+        </button>
 
         {/* Kundenanmeldung */}
         <Button
@@ -61,7 +85,7 @@ export default function AdminLoginPage() {
           className="hidden lg:flex items-center justify-center
                    absolute top-6 right-6 z-10
                    px-6 py-3 border border-[#E7E7E7] bg-black text-white font-bold
-                   hover:bg-[#E7E7E7] hover:text-black transition-all duration-200
+                   hover:bg-[#E7E7E7] hover:text-black transition-all duration-200 cursor-pointer
                    rounded"
         >
           Kundenanmeldung
@@ -139,7 +163,7 @@ export default function AdminLoginPage() {
             onClick={() => router.push("/login")}
             className="lg:hidden px-[12px_24px] !h-[50px] text-white !font-bold text-[16px]/[150%]
                          transition-all duration-200 flex items-center justify-center
-                         border border-[#E7E7E7] hover:bg-[#E7E7E7] hover:text-black cursor-pointer rounded mx-auto mt-6"
+                         border border-[#E7E7E7] hover:bg-[#E7E7E7] hover:text-black cursor-pointer rounded mx-auto mt-6 "
           >
             Kundenanmeldung
           </Button>
