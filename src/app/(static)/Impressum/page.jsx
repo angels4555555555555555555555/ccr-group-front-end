@@ -8,27 +8,27 @@ const Impressum = () => {
       <Header />
       <HeroSection />
       <div className="max-w-5xl mx-auto px-4 text-3xl font-light text-center mt-24">
-        <div className="text-4xl">CCR Group GmbH</div>
-        <p>Adresse:</p>
-        <p>Sankt Michael 29</p>
-        <p>91056 Munich</p>
-        <p>Deutschland</p>
+        <div className="text-2xl md:text-4xl">CCR Group GmbH</div>
+        <p className="text-xl md:text-3xl">Adresse:</p>
+        <p className="text-xl md:text-3xl">Sankt Michael 29</p>
+        <p className="text-xl md:text-3xl">91056 Munich</p>
+        <p className="text-xl md:text-3xl">Deutschland</p>
         <br />
-        <p>Zweigniederlassung</p>
+        <p className="text-xl md:text-3xl">Zweigniederlassung</p>
         <br />
-        <p>Feringastraße 4, </p>
-        <p>85774 Unterföhring,</p>
-        <p>Unterföhring, Landkreis München,</p>
-        <p>Deutschland</p>
-        <p className="mt-10">Telefon:</p>
-        <p>030519994482</p>
-        <p className="mt-10">E-Mail:</p>
-        <p>info@ccrgroupgmbh.com</p>
-        <p className="mt-10">Registergericht:</p>
-        <p>Amtsgericht Führt HRB 20838</p>
-        <p className="mt-10">Vertreten durch den Geschäftsführer:</p>
-        <p>Alexander Rizzeli</p>
-        <p className="my-24">
+        <p className="text-xl md:text-3xl">Feringastraße 4, </p>
+        <p className="text-xl md:text-3xl">85774 Unterföhring,</p>
+        <p className="text-xl md:text-3xl">Unterföhring, Landkreis München,</p>
+        <p className="text-xl md:text-3xl">Deutschland</p>
+        <p className="mt-10 text-2xl md:text-3xl">Telefon:</p>
+        <p className="text-xl md:text-3xl">030519994482</p>
+        <p className="mt-10 text-2xl md:text-3xl">E-Mail:</p>
+        <p className="text-xl md:text-3xl">info@ccrgroupgmbh.com</p>
+        <p className="mt-10 text-2xl md:text-3xl">Registergericht:</p>
+        <p className="text-xl md:text-3xl">Amtsgericht Führt HRB 20838</p>
+        <p className="mt-10 text-2xl md:text-3xl">Vertreten durch den Geschäftsführer:</p>
+        <p className="text-xl md:text-3xl">Alexander Rizzeli</p>
+        <p className="my-24 text-xl md:text-3xl">
           Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für
           die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir
           jedoch keine Gewähr übernehmen.
@@ -45,7 +45,7 @@ const Impressum = () => {
           Wir sind nicht verpflichtet, an Streitbeilegungsverfahren vor einer
           Verbraucherschlichtungsstelle teilzunehmen.
         </p>
-        <p className="mb-24">
+        <p className="mb-24 text-xl md:text-3xl">
           Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
           Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind
           als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung,

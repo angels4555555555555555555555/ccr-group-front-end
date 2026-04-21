@@ -72,13 +72,13 @@ export default function Header() {
         <div className="flex items-center gap-4">
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-10 text-base font-semibold text-gray-800">
-            <a href="#Services" onClick={(e) => handleAnchorClick(e, "Services")} className="transition hover:text-[#5639A5]">
+            <a href="#Services" onClick={(e) => handleAnchorClick(e, "Services")} className="transition hover:text-[#931A1D]">
               Services
             </a>
-            <a href="#UNSERE_GESCHICHTE" onClick={(e) => handleAnchorClick(e, "UNSERE_GESCHICHTE")} className="hover:text-[#5639A5] transition">
+            <a href="#UNSERE_GESCHICHTE" onClick={(e) => handleAnchorClick(e, "UNSERE_GESCHICHTE")} className="hover:text-[#931A1D] transition">
               Über uns
             </a>
-            <a href="#WARUM" onClick={(e) => handleAnchorClick(e, "WARUM")} className="hover:text-[#5639A5] transition" >
+            <a href="#WARUM" onClick={(e) => handleAnchorClick(e, "WARUM")} className="hover:text-[#931A1D] transition" >
               Warum sollten Sie uns wählen?
             </a>
 
@@ -101,7 +101,7 @@ export default function Header() {
               </div>
               <div className="absolute hidden group-hover:block bg-white border border-gray-200  mt-0.5 shadow-md w-50">
                 <ul className="text-sm">
-                  <li className="hover:bg-[#5639A5] hover:text-white transition">
+                  <li className="hover:bg-[#931A1D] hover:text-white transition">
                     <Link
                       href="/#Karriere"
                       onClick={(e) => { setMobileOpen(false); handleAnchorClick(e, "Karriere"); }}
@@ -110,7 +110,7 @@ export default function Header() {
                       Karriere
                     </Link>
                   </li>
-                  <li className="hover:bg-[#5639A5] hover:text-white transition">
+                  <li className="hover:bg-[#931A1D] hover:text-white transition">
                     <Link
                       href="/verm-gensverwaltung"
                       onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}
@@ -119,7 +119,7 @@ export default function Header() {
                       Vermögensverwaltung
                     </Link>
                   </li>
-                  <li className="hover:bg-[#5639A5] hover:text-white transition">
+                  <li className="hover:bg-[#931A1D] hover:text-white transition">
                     <Link
                       href='/ipo'
                       onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}
@@ -128,7 +128,7 @@ export default function Header() {
                       IPO
                     </Link>
                   </li>
-                  <li className="hover:bg-[#5639A5] hover:text-white transition">
+                  <li className="hover:bg-[#931A1D] hover:text-white transition">
                     <Link
                       href='/arbitrage'
                       onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}
@@ -137,7 +137,7 @@ export default function Header() {
                       Fest - und Tagesgeld
                     </Link>
                   </li>
-                  <li className="hover:bg-[#5639A5] hover:text-white transition">
+                  <li className="hover:bg-[#931A1D] hover:text-white transition">
                     <Link
                       href='/Impressum'
                       onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }}
@@ -153,14 +153,14 @@ export default function Header() {
 
           {/* Kundenlogin Button - Desktop */}
           <Link href="/login" className="hidden md:block">
-            <button className="bg-[#5639A5] text-white px-6 py-2.5 rounded-lg font-semibold transition-all cursor-pointer">
+            <button className="bg-[#931A1D] text-white px-6 py-2.5 rounded-lg font-semibold transition-all cursor-pointer">
               Kundenlogin
             </button>
           </Link>
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden p-2.5 rounded-lg focus:outline-none hover:bg-gray-100 transition-all relative z-50"
+            className="md:hidden p-2.5 rounded-lg focus:outline-none hover:bg-[931A1D] transition-all relative z-50"
             onClick={() => setMobileOpen((s) => !s)}
             aria-label="Toggle menu"
           >
@@ -188,7 +188,7 @@ export default function Header() {
                 <a 
                   href="#Services" 
                   onClick={(e) => { setMobileOpen(false); handleAnchorClick(e, "Services"); }} 
-                  className={`${isActive('#Services') ? 'text-[#5639A5] bg-[#5639A5]/10' : 'text-gray-800'} block py-3.5 px-4 rounded-lg hover:bg-[#5639A5]/10 hover:text-[#5639A5] transition-all font-semibold text-lg`}
+                  className={`${isActive('#Services') ? 'text-[#931A1D] bg-[#931A1D]/10' : 'text-gray-800'} block py-3.5 px-4 rounded-lg hover:bg-[#931A1D]/10 hover:text-[#931A1D] transition-all font-semibold text-lg`}
                 >
                   Services
                 </a>
@@ -197,7 +197,7 @@ export default function Header() {
                 <a 
                   href="#UNSERE_GESCHICHTE" 
                   onClick={(e) => { setMobileOpen(false); handleAnchorClick(e, "UNSERE_GESCHICHTE"); }} 
-                  className={`${isActive('#UNSERE_GESCHICHTE') ? 'text-[#5639A5] bg-[#5639A5]/10' : 'text-gray-800'} block py-3.5 px-4 rounded-lg hover:bg-[#5639A5]/10 hover:text-[#5639A5] transition-all font-semibold text-lg`}
+                  className={`${isActive('#UNSERE_GESCHICHTE') ? 'text-[#931A1D] bg-[#931A1D]/10' : 'text-gray-800'} block py-3.5 px-4 rounded-lg hover:bg-[#931A1D]/10 hover:text-[#931A1D] transition-all font-semibold text-lg`}
                 >
                   Über uns
                 </a>
@@ -206,7 +206,7 @@ export default function Header() {
                 <a 
                   href="#WARUM" 
                   onClick={(e) => { setMobileOpen(false); handleAnchorClick(e, "WARUM"); }} 
-                  className={`${isActive('#WARUM') ? 'text-[#5639A5] bg-[#5639A5]/10' : 'text-gray-800'} block py-3.5 px-4 rounded-lg hover:bg-[#5639A5]/10 hover:text-[#5639A5] transition-all font-semibold text-lg`}
+                  className={`${isActive('#WARUM') ? 'text-[#931A1D] bg-[#931A1D]/10' : 'text-gray-800'} block py-3.5 px-4 rounded-lg hover:bg-[#931A1D]/10 hover:text-[#931A1D] transition-all font-semibold text-lg`}
                 >
                   Warum sollten Sie uns wählen?
                 </a>
@@ -224,7 +224,7 @@ export default function Header() {
                   <a 
                     href="#Karriere" 
                     onClick={(e) => { setMobileOpen(false); handleAnchorClick(e, "Karriere"); }} 
-                    className={`${isActive('#Karriere') ? 'text-[#5639A5] bg-[#5639A5]/10' : 'text-gray-700'} block py-3 px-4 rounded-lg hover:bg-[#5639A5]/10 hover:text-[#5639A5] transition-all font-medium`}
+                    className={`${isActive('#Karriere') ? 'text-[#931A1D] bg-[#931A1D]/10' : 'text-gray-700'} block py-3 px-4 rounded-lg hover:bg-[#931A1D]/10 hover:text-[#931A1D] transition-all font-medium`}
                   >
                     Karriere
                   </a>
@@ -233,7 +233,7 @@ export default function Header() {
                   <Link 
                     href="/verm-gensverwaltung" 
                     onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }} 
-                    className={`${isActive('/verm-gensverwaltung') ? 'text-[#5639A5] bg-[#5639A5]/10' : 'text-gray-700'} block py-3 px-4 rounded-lg hover:bg-[#5639A5]/10 hover:text-[#5639A5] transition-all font-medium`}
+                    className={`${isActive('/verm-gensverwaltung') ? 'text-[#931A1D] bg-[#931A1D]/10' : 'text-gray-700'} block py-3 px-4 rounded-lg hover:bg-[#931A1D]/10 hover:text-[#931A1D] transition-all font-medium`}
                   >
                     Vermögensverwaltung
                   </Link>
@@ -242,7 +242,7 @@ export default function Header() {
                   <Link 
                     href="/ipo" 
                     onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }} 
-                    className={`${isActive('/ipo') ? 'text-[#5639A5] bg-[#5639A5]/10' : 'text-gray-700'} block py-3 px-4 rounded-lg hover:bg-[#5639A5]/10 hover:text-[#5639A5] transition-all font-medium`}
+                    className={`${isActive('/ipo') ? 'text-[#931A1D] bg-[#931A1D]/10' : 'text-gray-700'} block py-3 px-4 rounded-lg hover:bg-[#931A1D]/10 hover:text-[#931A1D] transition-all font-medium`}
                   >
                     IPO
                   </Link>
@@ -251,7 +251,7 @@ export default function Header() {
                   <Link 
                     href="/arbitrage" 
                     onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }} 
-                    className={`${isActive('/arbitrage') ? 'text-[#5639A5] bg-[#5639A5]/10' : 'text-gray-700'} block py-3 px-4 rounded-lg hover:bg-[#5639A5]/10 hover:text-[#5639A5] transition-all font-medium`}
+                    className={`${isActive('/arbitrage') ? 'text-[#931A1D] bg-[#931A1D]/10' : 'text-gray-700'} block py-3 px-4 rounded-lg hover:bg-[#931A1D]/10 hover:text-[#931A1D] transition-all font-medium`}
                   >
                     Fest - und Tagesgeld
                   </Link>
@@ -260,7 +260,7 @@ export default function Header() {
                   <Link 
                     href="/Impressum" 
                     onClick={() => { setMobileOpen(false); window.scrollTo(0, 0); }} 
-                    className={`${isActive('/Impressum') ? 'text-[#5639A5] bg-[#5639A5]/10' : 'text-gray-700'} block py-3 px-4 rounded-lg hover:bg-[#5639A5]/10 hover:text-[#5639A5] transition-all font-medium`}
+                    className={`${isActive('/Impressum') ? 'text-[#931A1D] bg-[#931A1D]/10' : 'text-gray-700'} block py-3 px-4 rounded-lg hover:bg-[#931A1D]/10 hover:text-[#931A1D] transition-all font-medium`}
                   >
                     Impressum
                   </Link>
@@ -271,7 +271,7 @@ export default function Header() {
             {/* Kundenlogin Button - Mobile */}
             <div className="mt-6">
               <Link href="/login" onClick={() => setMobileOpen(false)}>
-                <button className="w-full bg-[#5639A5] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#4a1213] transition-all cursor-pointer">
+                <button className="w-full bg-[#931A1D] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#4a1213] transition-all cursor-pointer">
                   Kundenlogin
                 </button>
               </Link>
@@ -279,10 +279,10 @@ export default function Header() {
 
             {/* Contact CTA at bottom */}
             <div className="mt-auto pt-6">
-              <div className="bg-[#5639A5] text-white rounded-xl p-6 text-center">
+              <div className="bg-[#931A1D] text-white rounded-xl p-6 text-center">
                 <h4 className="font-bold text-lg mb-2">Bereit anzufangen?</h4>
                 <p className="text-sm text-white/90 mb-4">Vereinbaren Sie noch heute eine Beratung</p>
-                <a href="/#Karriere" className="inline-block bg-white text-[#5639A5] px-6 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition-all">
+                <a href="/#Karriere" className="inline-block bg-white text-[#931A1D] px-6 py-2.5 rounded-lg font-semibold hover:bg-gray-100 transition-all">
                   Karriere
                 </a>
               </div>

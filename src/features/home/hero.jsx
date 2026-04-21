@@ -18,7 +18,7 @@ export default function Hero({ imageUrl }) {
           </h1>
           <a
             href="/#Karriere"
-            className="inline-block px-6 py-4 rounded-lg bg-[#5639A5] font-bold"
+            className="inline-block px-6 py-4 rounded-lg bg-[#931A1D] font-bold"
           >
             Konsultation buchen
           </a>

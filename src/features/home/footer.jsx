@@ -8,10 +8,10 @@ export default function Footer() {
         <img
           src="/logo.png"
           alt="RCH Capital Holding GMBH. Logo"
-          className="w-30 h-auto mb-2"
+          className="w-35 "
         />
 
-        <div className="flex flex-col gap-3 mt-4">
+        <div className="flex flex-col gap-2 mt-2 ">
           <a href="/">
             <button className="border border-gray-400 text-gray-600 px-6 py-2 font-bold rounded-lg text-lg hover:bg-gray-100 transition w-full">
               Home
@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
 
         {/* Center Section */}
-        <div className="flex items-center gap-24 text-center">
+        <div className="flex items-center gap-4 md:gap-24 text-center">
           {/* Email */}
           <div>
             <div className="flex flex-col items-center">
