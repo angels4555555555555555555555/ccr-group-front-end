@@ -83,7 +83,7 @@ export default function Contact() {
         <div className="mt-4">
           <button
             type="button"
-            className="px-5 py-3 rounded-md bg-primary text-primary-foreground hover:opacity-90 cursor-pointer transition bg-[#931A1D] w-full text-white"
+            className="px-5 py-3 rounded-md bg-primary text-primary-foreground hover:opacity-90 cursor-pointer transition bg-[#2E3192] w-full text-white"
           >
             Absenden
           </button>

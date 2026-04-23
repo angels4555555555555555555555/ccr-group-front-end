@@ -30,7 +30,7 @@ export default function Home() {
           </div>
           <FeatureCards />
           <div className="text-center mt-18">
-            <Link href="/#Karriere" className="px-6 py-4 text-white rounded-lg bg-[#931A1D] font-bold">
+            <Link href="/#Karriere" className="px-6 py-4 text-white rounded-lg bg-[#2E3192] font-bold">
               Konsultation buchen
             </Link>
           </div>
@@ -75,7 +75,7 @@ export default function Home() {
           </div>
           <Strengths />
           <div className="text-center mt-18">
-            <a className="px-6 py-4 text-white rounded-lg bg-[#931A1D] font-bold">
+            <a className="px-6 py-4 text-white rounded-lg bg-[#2E3192] font-bold">
               Konsultation buchen
             </a>
           </div>
