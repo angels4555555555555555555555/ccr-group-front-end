@@ -8,7 +8,7 @@ const CallToActionSection = () => {
         Haben wir ihr Interesse geweckt?
       </h1>
       <Link href="/#Karriere">
-        <button className="bg-[#931A1D] rounded-lg p-[5px_20px] text-white font-semibold w-[220px] h-[42px]">
+        <button className="bg-[#2E3192] rounded-lg p-[5px_20px] text-white font-semibold w-[220px] h-[42px]">
           Kontaktieren Sie uns
         </button>
       </Link>
