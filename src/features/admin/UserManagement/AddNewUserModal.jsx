@@ -82,8 +82,12 @@ const AddNewUserModal = ({ opened, onClose }) => {
   });
 
   const handleSubmit = React.useCallback((values) => {
+    const normalizedValues = {
+      ...values,
+      email: values.email.toLowerCase(),
+    };
     requestAnimationFrame(() => {
-      mutate(values);
+      mutate(normalizedValues);
     });
   }, [mutate]);
 
@@ -167,7 +171,11 @@ const AddNewUserModal = ({ opened, onClose }) => {
             label="E-Mail"
             placeholder="Benutzer-E-Mail eingeben"
             withAsterisk
+            styles={{ input: { textTransform: "lowercase" } }}
             {...form.getInputProps("email")}
+            onChange={(e) =>
+              form.setFieldValue("email", e.currentTarget.value.toLowerCase())
+            }
           />
           <PasswordInput
             label="Passwort"

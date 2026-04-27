@@ -62,7 +62,8 @@ const Page = () => {
               <div className="relative inline-block mb-[18px]">
                 <Image
                   className="rounded-full size-[72px] z-0"
-                  src={data?.user?.profilePicture?.url || ProfilePic}
+                  src={data?.user?.profilePicture?.url || 'https://res.cloudinary.com/dwa9gziu6/image/upload/v1753884468/generic_profile_crzbbe.png'
+                  }
                   alt="Profilbild"
                   width={72}
                   height={72}

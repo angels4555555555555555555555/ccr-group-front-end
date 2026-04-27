@@ -1,12 +1,6 @@
 import { authManagementAPIs } from "../api/auth";
 import { useQuery } from "@tanstack/react-query";
-import { useInfiniteQuery } from '@tanstack/react-query';
-import {
-    useQueryWithErrorToast,
-    useMutationWithToast,
-    useMultiQueryWithErrorToast,
-    useInfiniteQueryWithErrorToast
-} from "../utils/tanstackInstance";
+import { useMutationWithToast } from "../utils/tanstackInstance";
 
 // /** -------------------------------
 //  * 👤 Admin Login

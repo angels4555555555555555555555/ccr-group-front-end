@@ -4,25 +4,27 @@ export default function Contact() {
       <div className="p-6 bg-card h-[90%] self-center flex flex-col justify-between md:col-span-1 col-span-2 text-center lg:text-left">
         <h4 className="font-light text-2xl mb-2">Informationen zum Büro</h4>
         <p className="text-muted-foreground text-lg font-light">
-          Sankt Michael 29,
+          Unterföhring, Landkreis München
           <br />
-          91056 Munich
+          Geschäftsanschrift:
           <br />
-          Deutschland
+          Feringastraße 4, 85774 Unterföhring
           <br />
           <br />
           Zweigniederlassung
           <br />
           <br />
-          <p>Feringastraße 4, </p>
-          <p>85774 Unterföhring,</p>
-          <p>Unterföhring, Landkreis München,</p>
-          <p>Deutschland</p>
+
+          <p>Innovationspark / Büro & Campus </p>
+          <p>Rheinstraße 194 b, </p>
+          <p>55218,</p>
+          <p>Ingelheim am Rhein</p>
+
           <br />
           CCR Group GmbH
         </p>
         <div className="mt-4 space-y-8 text-muted-foreground text-lg font-light">
-          <p>030519994482</p>
+          <p>061329999153</p>
           <p>info@ccrgroupgmbh.com</p>
         </div>
       </div>

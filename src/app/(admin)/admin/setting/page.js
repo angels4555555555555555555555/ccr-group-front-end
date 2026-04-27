@@ -8,6 +8,7 @@ import ProfilePic from "../../../../assets/images/profile.jpg";
 import EditPen from "../../../../assets/icons/EditPen";
 import LoadingBackdrop from "@/features/common/LoadingBackdrop";
 import { useGetProfilePicture, useUpdateProfilePicture, useChangePassword } from "@/hooks/admin/profile";
+import { toast } from "sonner";
 
 export default function Page() {
     const [profileUrl, setProfileUrl] = useState(null);
@@ -51,7 +52,7 @@ export default function Page() {
 
     const handleFileChange = (file) => {
         if (file && file.size > 5 * 1024 * 1024) {
-            alert("Dateigröße überschreitet das Limit von 5 MB.");
+            toast.error("Dateigröße überschreitet das Limit von 5 MB.");
             return;
         }
         uploadPicture(file);
@@ -69,7 +70,7 @@ export default function Page() {
                 <div className="relative inline-block">
                     <Image
                         className="rounded-full size-[72px] z-0"
-                        src={profileUrl || ProfilePic}
+                        src={profileUrl || "https://res.cloudinary.com/dwa9gziu6/image/upload/v1753884468/generic_profile_crzbbe.png"}
                         alt="Profilbild"
                         width={72}
                         height={72}
