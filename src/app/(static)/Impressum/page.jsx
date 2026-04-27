@@ -10,18 +10,20 @@ const Impressum = () => {
       <div className="max-w-5xl mx-auto px-4 text-3xl font-light text-center mt-24">
         <div className="text-2xl md:text-4xl">CCR Group GmbH</div>
         <p className="text-xl md:text-3xl">Adresse:</p>
-        <p className="text-xl md:text-3xl">Sankt Michael 29</p>
-        <p className="text-xl md:text-3xl">91056 Munich</p>
-        <p className="text-xl md:text-3xl">Deutschland</p>
+        <p className="text-xl md:text-3xl">Unterföhring, Landkreis München</p>
+        <p className="text-xl md:text-3xl">Geschäftsanschrift:</p>
+        <p className="text-xl md:text-3xl">Feringastraße 4, 85774 Unterföhring</p>
         <br />
         <p className="text-xl md:text-3xl">Zweigniederlassung</p>
         <br />
-        <p className="text-xl md:text-3xl">Feringastraße 4, </p>
-        <p className="text-xl md:text-3xl">85774 Unterföhring,</p>
-        <p className="text-xl md:text-3xl">Unterföhring, Landkreis München,</p>
-        <p className="text-xl md:text-3xl">Deutschland</p>
+
+        <p className="text-xl md:text-3xl">Innovationspark / Büro & Campus</p>
+        <p className="text-xl md:text-3xl">Rheinstraße 194 b, </p>
+        <p className="text-xl md:text-3xl">55218, </p>
+        <p className="text-xl md:text-3xl">Ingelheim am Rhein</p>
+
         <p className="mt-10 text-2xl md:text-3xl">Telefon:</p>
-        <p className="text-xl md:text-3xl">030519994482</p>
+        <p className="text-xl md:text-3xl">061329999153</p>
         <p className="mt-10 text-2xl md:text-3xl">E-Mail:</p>
         <p className="text-xl md:text-3xl">info@ccrgroupgmbh.com</p>
         <p className="mt-10 text-2xl md:text-3xl">Registergericht:</p>

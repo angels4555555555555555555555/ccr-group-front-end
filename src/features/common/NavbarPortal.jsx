@@ -5,42 +5,33 @@ import BurgerIcon from "../../assets/icons/BurgerIcon";
 import BackArrow from "../../assets/icons/backArrow";
 import { useRouter, usePathname } from "next/navigation";
 import { X } from "lucide-react";
-import { useAdminLogout, useUserLogout } from "@/hooks/auth";
+import { useMutationWithToast } from "@/utils/tanstackInstance";
+import { authManagementAPIs } from "@/api/auth";
 import LoadingBackdrop from "@/features/common/LoadingBackdrop";
 
 const NavbarPortal = ({ admin = false, openMenu, setOpenMenu }) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const { mutate: logoutAdmin, isPending: isAdminLoggingOut } = useAdminLogout(
-    () => {
-      router.push("/login/admin");
-    }
-  );
-
-  const { mutate: logoutUser, isPending: isUserLoggingOut } = useUserLogout(
-    () => {
-      router.push("/login");
-    }
-  );
-
-  const handleLogout = () => {
-    if (admin) {
-      logoutAdmin();
-    } else {
-      logoutUser();
-    }
-  };
+  const { mutate: handleLogout, isPending: isLoggingOut } = useMutationWithToast({
+    mutationFn: () =>
+      admin ? authManagementAPIs.adminLogout() : authManagementAPIs.userLogout(),
+    successMsg: "Logout erfolgreich!",
+    errorMsg: "Logout fehlgeschlagen",
+    onSuccess: () => {
+      router.push(admin ? "/login/admin" : "/login");
+    },
+  });
 
   return (
     <>
-      {(isAdminLoggingOut || isUserLoggingOut) && <LoadingBackdrop />}
+      {isLoggingOut && <LoadingBackdrop />}
 
       <div className="px-[24.5px_16px] py-2 flex justify-between items-center">
         {admin ? (
-          <img src="/logo.png" alt="" className="w-20"/>
+          <img src="/logo.png" alt="" className="w-24" />
         ) : (
-          <img src="/logo.png" alt="" className="w-20"/>
+          <img src="/logo.png" alt="" className="w-24" />
         )}
 
         {!admin ? (

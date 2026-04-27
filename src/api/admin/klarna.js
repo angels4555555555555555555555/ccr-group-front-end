@@ -6,7 +6,6 @@ export const klarnaAPIs = {
             const response = await axiosInstance.get("/admin/retrieveKlarnaPrice");
             return response.data;
         } catch (error) {
-            console.log("error", error);
             throw new Error(error?.response?.data?.message || "Failed to get klarna. Please try again.");
         }
     },
@@ -15,7 +14,6 @@ export const klarnaAPIs = {
             const response = await axiosInstance.patch("/admin/changeKlarnaPrice", data);
             return response.data;
         } catch (error) {
-            console.log("error", error);
             throw new Error(error?.response?.data?.message || "Failed to update klarna. Please try again.");
         }
     }

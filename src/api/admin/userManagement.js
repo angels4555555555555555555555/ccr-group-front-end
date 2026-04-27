@@ -13,7 +13,6 @@ export const userManagementAPIs = {
             });
             return response.data;
         } catch (error) {
-            console.log("error", error);
             throw new Error(error?.response?.data?.message || "Failed to get users. Please try again.");
         }
 
@@ -23,7 +22,6 @@ export const userManagementAPIs = {
             const response = await axiosInstance.post("/admin/createUser", data);
             return response.data;
         } catch (error) {
-            console.log("error", error);
             throw new Error(error?.response?.data?.message || "Failed to create user. Please try again.");
         }
     },
@@ -36,7 +34,6 @@ export const userManagementAPIs = {
             )
             return response.data;
         } catch (error) {
-            console.log("error", error);
             throw new Error(error?.response?.data?.message || "Failed to delete user. Please try again.");
         }
     },
@@ -45,7 +42,6 @@ export const userManagementAPIs = {
             const response = await axiosInstance.get(`/admin/getUser/${id}`);
             return response.data;
         } catch (error) {
-            console.log("error", error);
             throw new Error(error?.response?.data?.message || "Failed to get user. Please try again.");
         }
     },
@@ -54,7 +50,6 @@ export const userManagementAPIs = {
             const response = await axiosInstance.patch("/admin/updateUser", updatedData);
             return response.data;
         } catch (error) {
-            console.log("error", error);
             throw new Error(error?.response?.data?.message || "Failed to update user. Please try again.");
         }
     },
@@ -63,7 +58,6 @@ export const userManagementAPIs = {
             const response = await axiosInstance.get(`/admin/revealPassword/${id}`);
             return response.data;
         } catch (error) {
-            console.log("error", error);
             throw new Error(error?.response?.data?.message || "Failed to reveal password. Please try again.");
         }
     },

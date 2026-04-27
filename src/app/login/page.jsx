@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { Check, Copy } from "lucide-react";
 import {
   TextInput,
@@ -13,8 +12,6 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { toast } from "sonner";
-import Signupbg from "../../assets/images/singup bg.jpg";
-import SignupIpad from "../../assets/images/SignupIpad.png";
 import { useDisclosure } from "@mantine/hooks";
 import { useRouter } from "next/navigation";
 import { useUserLogin } from "@/hooks/auth";
@@ -166,7 +163,11 @@ const Page = () => {
               label="E-Mail"
               placeholder="deine@email.com"
               className="w-full"
+              styles={{ input: { textTransform: "lowercase" } }}
               {...form.getInputProps("email")}
+              onChange={(e) =>
+                form.setFieldValue("email", e.currentTarget.value.toLowerCase())
+              }
             />
 
             <div className="flex flex-col gap-2">
