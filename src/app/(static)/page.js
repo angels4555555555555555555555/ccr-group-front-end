@@ -116,7 +116,7 @@ export default function Home() {
               ANERKANNTE SPITZENLEISTUNGEN
             </p>
             <p className="text-muted-foreground mt-8 text-center leading-relaxed font-light text-lg">
-             Unser Team verfügt über anerkannte Auszeichnungen sowie relevante Akkreditierungen der Finanzbranche, die unsere fachliche Qualifikation, strukturierten Prozesse und professionelle Arbeitsweise dokumentieren. Diese Qualifikationen bilden eine belastbare Grundlage für fundierte Investitionsentscheidungen und eine verantwortungsvolle Begleitung von Kapital.  Durch kontinuierliche fachliche Weiterbildung, die Einhaltung hoher Qualitäts- und Compliance-Standards sowie die fortlaufende Anpassung an regulatorische und marktwirtschaftliche Anforderungen gewährleisten wir eine verlässliche, transparente und investorenorientierte Beratung.
+              Unser Team verfügt über anerkannte Auszeichnungen sowie relevante Akkreditierungen der Finanzbranche, die unsere fachliche Qualifikation, strukturierten Prozesse und professionelle Arbeitsweise dokumentieren. Diese Qualifikationen bilden eine belastbare Grundlage für fundierte Investitionsentscheidungen und eine verantwortungsvolle Begleitung von Kapital.  Durch kontinuierliche fachliche Weiterbildung, die Einhaltung hoher Qualitäts- und Compliance-Standards sowie die fortlaufende Anpassung an regulatorische und marktwirtschaftliche Anforderungen gewährleisten wir eine verlässliche, transparente und investorenorientierte Beratung.
             </p>
           </div>
           <Awards />
@@ -163,9 +163,11 @@ export default function Home() {
         data-termly-iframe-id="termly-iframe-0"
         style={{ display: "block" }}
         data-autoblock-ignore="1"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.286268866715!2d13.3723736!3d52.5101582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c9c01cf5df%3A0x455516431cbe2511!2sPotsdamer%20Str.%202%2C%2010785%20Berlin%2C%20Germany!5e0!3m2!1sen!2s!4v1768313332804!5m2!1sen!2s"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2566.579565161008!2d7.890558576924768!3d49.962988822341785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bdef7c45e6b70f%3A0xbb6c35be87db6437!2sInnovationspark%20Bingen%20GmbH!5e0!3m2!1sen!2s!4v1777330176083!5m2!1sen!2s"
         title="Google Maps Location"
       ></iframe>
+
+
 
       <Footer />
     </main>
