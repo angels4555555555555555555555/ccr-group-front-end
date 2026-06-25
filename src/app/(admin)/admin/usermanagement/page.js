@@ -26,7 +26,7 @@ const Page = () => {
         }, 500);
         return () => clearTimeout(timeout);
     }, [debouncedSearch]);
-    const { data, isPending } = useGetUsersList(filter);
+    const { data, isPending, isError, error, refetch } = useGetUsersList(filter);
 
     return (
       <div>
@@ -44,7 +44,13 @@ const Page = () => {
           onSearchChange={setDebouncedSearch}
           openModal={open}
         />
-        <UserList
+        {isError ? (
+          <div className="border border-red-200 bg-red-50 p-6 text-red-800">
+            <p className="font-semibold">Benutzerliste konnte nicht geladen werden.</p>
+            <p className="mt-1 text-sm">{error?.message}</p>
+            <button type="button" onClick={() => refetch()} className="mt-4 bg-black px-4 py-2 text-white">Erneut versuchen</button>
+          </div>
+        ) : <UserList
           filter={filter}
           setFilter={setFilter}
           data={data}
@@ -52,7 +58,7 @@ const Page = () => {
           setPassword={setPassword}
           openPassword={openPassword}
           openEdit={openEdit}
-        />
+        />}
         {passwordOpen && (
           <PasswordRevealModal
             opened={passwordOpen}

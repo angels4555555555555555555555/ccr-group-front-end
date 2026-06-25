@@ -1,4 +1,5 @@
 import axiosInstance from "@/utils/axiosInstance";
+import { getApiErrorMessage } from "@/utils/apiError";
 
 export const userManagementAPIs = {
     getUsersList: async ({ page = 1, pageSize = 10, searchTerm }) => {
@@ -13,7 +14,7 @@ export const userManagementAPIs = {
             });
             return response.data;
         } catch (error) {
-            throw new Error(error?.response?.data?.message || "Failed to get users. Please try again.");
+            throw new Error(getApiErrorMessage(error, "Benutzer konnten nicht geladen werden."));
         }
 
     },
@@ -22,19 +23,19 @@ export const userManagementAPIs = {
             const response = await axiosInstance.post("/admin/createUser", data);
             return response.data;
         } catch (error) {
-            throw new Error(error?.response?.data?.message || "Failed to create user. Please try again.");
+            throw new Error(getApiErrorMessage(error, "Benutzer konnte nicht erstellt werden."));
         }
     },
     deleteUser: async (userIds) => {
         try {
-            const response = await axiosInstance.patch("/admin/deleteUser/",
+            const response = await axiosInstance.patch("/admin/deleteUser",
                 {
                     userIds
                 }
             )
             return response.data;
         } catch (error) {
-            throw new Error(error?.response?.data?.message || "Failed to delete user. Please try again.");
+            throw new Error(getApiErrorMessage(error, "Benutzer konnte nicht gelöscht werden."));
         }
     },
     getUser: async (id) => {
@@ -42,7 +43,7 @@ export const userManagementAPIs = {
             const response = await axiosInstance.get(`/admin/getUser/${id}`);
             return response.data;
         } catch (error) {
-            throw new Error(error?.response?.data?.message || "Failed to get user. Please try again.");
+            throw new Error(getApiErrorMessage(error, "Benutzer konnte nicht geladen werden."));
         }
     },
     updateUser: async (updatedData) => {
@@ -50,7 +51,7 @@ export const userManagementAPIs = {
             const response = await axiosInstance.patch("/admin/updateUser", updatedData);
             return response.data;
         } catch (error) {
-            throw new Error(error?.response?.data?.message || "Failed to update user. Please try again.");
+            throw new Error(getApiErrorMessage(error, "Benutzer konnte nicht aktualisiert werden."));
         }
     },
     revealPassword: async (id) => {
@@ -58,7 +59,7 @@ export const userManagementAPIs = {
             const response = await axiosInstance.get(`/admin/revealPassword/${id}`);
             return response.data;
         } catch (error) {
-            throw new Error(error?.response?.data?.message || "Failed to reveal password. Please try again.");
+            throw new Error(getApiErrorMessage(error, "Passwort konnte nicht angezeigt werden."));
         }
     },
 };

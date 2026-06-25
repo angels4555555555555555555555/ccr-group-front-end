@@ -49,6 +49,7 @@ export const useGetUser = (id) =>
         {
             queryKey: ["user", id],
             queryFn: () => userManagementAPIs.getUser(id),
+            enabled: Boolean(id),
             keepPreviousData: true,
         },
         "Benutzer konnte nicht abgerufen werden"

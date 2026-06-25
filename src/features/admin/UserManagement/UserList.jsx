@@ -6,7 +6,8 @@ import MentineMenu from "@/features/common/MentineMenu";
 import { useDeleteUser, useRevealPassword } from "@/hooks/admin/userManagement";
 import { useQueryClient } from "@tanstack/react-query";
 import LoadingBackdrop from "@/features/common/LoadingBackdrop";
-import { useRouter } from "next/navigation";
+const PRODUCT_LABELS = { festgeld: "Festgeld", tagesgeld: "Tagesgeld", openAI: "OpenAI" };
+const productNames = (products = []) => products.map((product) => PRODUCT_LABELS[product] || product).join(", ") || "–";
 const UserList = ({
   data,
   setCurrentUser,
@@ -24,9 +25,9 @@ const UserList = ({
     getInitialValueInEffect: true,
   });
   const queryClient = useQueryClient();
-  const router = useRouter();
   const { mutate, isPending } = useDeleteUser(() => {
-    queryClient.invalidateQueries(["usersList"]);
+    queryClient.invalidateQueries({ queryKey: ["usersList"] });
+    setSelected(new Set());
   });
   const { mutate: revealPassword, isPending: isRevealingPassword } =
     useRevealPassword((res) => {
@@ -48,7 +49,8 @@ const UserList = ({
   };
   const handleBulkDelete = () => {
     const ids = Array.from(selected);
-    mutate(ids);
+    if (!ids.length) return;
+    if (window.confirm(`${ids.length} Benutzer wirklich löschen?`)) mutate(ids);
   };
   const handleEdit = (id) => {
     setCurrentUser(id);
@@ -58,7 +60,7 @@ const UserList = ({
     revealPassword(id);
   };
   const handleDelete = (id) => {
-    mutate([id]);
+    if (window.confirm("Diesen Benutzer wirklich löschen?")) mutate([id]);
   };
   //  Menu Items
   const bulkMenuItems = [
@@ -94,8 +96,7 @@ const UserList = ({
             <div className="col-span-2">E-Mail</div>
             <div className="col-span-1">Geschlecht</div>
             <div className="col-span-1">Land</div>
-            <div className="col-span-1">SpaceX-Anteile</div>
-            <div className="col-span-1">Gesamtwert</div>
+            <div className="col-span-2">Produkte</div>
             <div className="col-span-1">
               <div className="flex justify-center">
                 <MentineMenu items={bulkMenuItems} ariaLabel="Sammelaktionen" />
@@ -174,17 +175,9 @@ const UserList = ({
                         <span className="font-semibold">{row.country}</span>
                       </div>
 
-                      <div className="flex items-center justify-between">
-                        <span className="text-[#64748B]">SpaceX-Anteile</span>
-                        <span className="tabular-nums">{row.shares}</span>
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <span className="text-[#64748B]">Gesamtwert</span>
-                        <span className="font-semibold">
-                          {/* {row.totalShareValue} */}
-                          {row?.shares * row?.klarnaPrice}
-                        </span>
+                      <div className="flex items-start justify-between gap-4">
+                        <span className="text-[#64748B]">Produkte</span>
+                        <span className="text-right font-semibold">{productNames(row.products)}</span>
                       </div>
                     </div>
                   </div>
@@ -221,11 +214,7 @@ const UserList = ({
                     </div>
                     <div className="col-span-1">{row.gender}</div>
                     <div className="col-span-1">{row.country}</div>
-                    <div className="col-span-1 tabular-nums">{row.shares}</div>
-                    <div className="col-span-1 font-medium">
-                      {/* {row.totalShareValue} */}
-                      {row?.shares * row?.klarnaPrice}
-                    </div>
+                    <div className="col-span-2 truncate font-medium">{productNames(row.products)}</div>
                     <div className="col-span-1">
                       <div className="flex justify-center">
                         <MentineMenu
@@ -243,7 +232,7 @@ const UserList = ({
         <hr className="mt-4 mb-8 border-1 border-[#F1F5F9]" />
         <div className="pagination">
           <Pagination
-            total={data?.totalPages}
+            total={Math.max(1, data?.totalPages || 1)}
             value={filter.page}
             onChange={(page) => {
               setSelected(new Set());

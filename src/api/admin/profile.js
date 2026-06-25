@@ -1,4 +1,5 @@
 import axiosInstance from "@/utils/axiosInstance";
+import { getApiErrorMessage } from "@/utils/apiError";
 export const profileAPIs = {
     updateProfilePicture: async (file) => {
         try {
@@ -12,9 +13,8 @@ export const profileAPIs = {
             });
             return response.data;
         } catch (error) {
-            console.error("Profile picture update error:", error);
             throw new Error(
-                error?.response?.data?.message || "Failed to update profile picture. Please try again."
+                getApiErrorMessage(error, "Profilbild konnte nicht aktualisiert werden.")
             );
         }
     },
@@ -23,9 +23,8 @@ export const profileAPIs = {
             const response = await axiosInstance.get("/admin/getProfile");
             return response.data;
         } catch (error) {
-            console.error("Profile picture get error:", error);
             throw new Error(
-                error?.response?.data?.message || "Failed to get profile picture. Please try again."
+                getApiErrorMessage(error, "Adminprofil konnte nicht geladen werden.")
             );
         }
     },
@@ -34,9 +33,8 @@ export const profileAPIs = {
             const response = await axiosInstance.patch("/admin/changePassword", data);
             return response.data;
         } catch (error) {
-            console.error("Change password error:", error);
             throw new Error(
-                error?.response?.data?.message || "Failed to change password. Please try again."
+                getApiErrorMessage(error, "Passwort konnte nicht geändert werden.")
             );
         }
     },

@@ -1,17 +1,18 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { PasswordInput, FileButton } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import ProfilePic from "../../../../assets/images/profile.jpg";
 import EditPen from "../../../../assets/icons/EditPen";
 import LoadingBackdrop from "@/features/common/LoadingBackdrop";
-import { useGetProfilePicture, useUpdateProfilePicture, useChangePassword } from "@/hooks/admin/profile";
+import { useGetAdminProfile, useUpdateProfilePicture, useChangePassword } from "@/hooks/admin/profile";
 import { toast } from "sonner";
+import { PASSWORD_PATTERN } from "@/features/admin/UserManagement/userForm";
+
+const IMAGE_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 
 export default function Page() {
-    const [profileUrl, setProfileUrl] = useState(null);
     const form = useForm({
         initialValues: {
             currentPassword: "",
@@ -20,37 +21,33 @@ export default function Page() {
         validate: {
             currentPassword: (v) => {
                 if (!v.trim()) return "Aktuelles Passwort ist erforderlich";
-                if (v.length < 6) return "Mindestens 6 Zeichen erforderlich";
                 return null;
             },
             newPassword: (v, values) => {
                 if (!v.trim()) return "Neues Passwort ist erforderlich";
-                if (v.length < 6) return "Mindestens 6 Zeichen erforderlich";
+                if (!PASSWORD_PATTERN.test(v)) return "Mindestens 8 Zeichen mit Großbuchstabe, Zahl und !@#$%^&*";
                 if (v === values.currentPassword) return "Neues Passwort muss unterschiedlich sein";
                 return null;
             },
         },
     });
 
-    const fileInputRef = useRef(null);
-
     const { mutate: updatePassword, isPending: isUpdatingPassword } = useChangePassword(() => form.reset());
     const { mutate: uploadPicture, isPending: isUpdating } = useUpdateProfilePicture(() => {
-        refetchProfile();
+        refetch();
     });
-    const { mutate: refetchProfile, isPending } = useGetProfilePicture((res) => {
-        setProfileUrl(res?.admin?.profilePicture?.url);
-    });
-
-    useEffect(() => {
-        refetchProfile();
-    }, [refetchProfile]);
+    const { data, isPending, refetch } = useGetAdminProfile();
 
     const onSubmit = (values) => {
         updatePassword(values);
     };
 
     const handleFileChange = (file) => {
+        if (!file) return;
+        if (!IMAGE_TYPES.includes(file.type)) {
+            toast.error("Erlaubt sind JPEG, PNG, GIF und WebP.");
+            return;
+        }
         if (file && file.size > 5 * 1024 * 1024) {
             toast.error("Dateigröße überschreitet das Limit von 5 MB.");
             return;
@@ -70,13 +67,13 @@ export default function Page() {
                 <div className="relative inline-block">
                     <Image
                         className="rounded-full size-[72px] z-0"
-                        src={profileUrl || "https://res.cloudinary.com/dwa9gziu6/image/upload/v1753884468/generic_profile_crzbbe.png"}
+                        src={data?.admin?.profilePicture?.url || "https://res.cloudinary.com/dwa9gziu6/image/upload/v1753884468/generic_profile_crzbbe.png"}
                         alt="Profilbild"
                         width={72}
                         height={72}
                     />
 
-                    <FileButton accept="image/*" onChange={handleFileChange}>
+                    <FileButton accept={IMAGE_TYPES.join(",")} onChange={handleFileChange}>
                         {(props) => (
                             <button
                                 {...props}

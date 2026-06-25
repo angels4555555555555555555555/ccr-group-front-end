@@ -31,15 +31,11 @@ const Page = () => {
     validate: {
       email: (value) =>
         /^\S+@\S+$/.test(value) ? null : "Ungültige E-Mail-Adresse",
-      password: (value) =>
-        value.length >= 6
-          ? null
-          : "Passwort muss mindestens 6 Zeichen lang sein",
+      password: (value) => value ? null : "Passwort ist erforderlich",
     },
   });
 
   const { mutate: loginUser, isPending } = useUserLogin(() => {
-    toast.success("Anmeldung erfolgreich! Willkommen zurück.");
     router.push("/user");
   });
 

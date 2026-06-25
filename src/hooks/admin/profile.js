@@ -1,5 +1,5 @@
 import { profileAPIs } from "../../api/admin/profile";
-import { useMutationWithToast } from "../../utils/tanstackInstance";
+import { useMutationWithToast, useQueryWithErrorToast } from "../../utils/tanstackInstance";
 
 /** -------------------------------
  * 🖼️ Profilbild aktualisieren
@@ -15,13 +15,11 @@ export const useUpdateProfilePicture = (onSuccessCallback) =>
 /** -------------------------------
  * 🖼️ Profilbild abrufen
  ---------------------------------- */
-export const useGetProfilePicture = (onSuccessCallback) =>
-    useMutationWithToast({
-        mutationFn: profileAPIs.getProfile,
-        successMsg: "Profilbild erfolgreich abgerufen!",
-        errorMsg: "Profilbild konnte nicht abgerufen werden",
-        onSuccess: onSuccessCallback,
-    });
+export const useGetAdminProfile = () =>
+    useQueryWithErrorToast(
+        { queryKey: ["adminProfile"], queryFn: profileAPIs.getProfile },
+        "Adminprofil konnte nicht abgerufen werden"
+    );
 
 /** -------------------------------
  * 🔑 Passwort ändern

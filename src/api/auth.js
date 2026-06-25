@@ -1,4 +1,5 @@
 import axiosInstance from "../utils/axiosInstance";
+import { getApiErrorMessage } from "../utils/apiError";
 export const authManagementAPIs = {
     adminLogin: async (data) => {
         try {
@@ -6,7 +7,7 @@ export const authManagementAPIs = {
             return response.data;
         } catch (error) {
 
-            throw new Error(error?.response?.data?.message || "Failed to login. Please try again.");
+            throw new Error(getApiErrorMessage(error, "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut."));
         }
     },
     adminLogout: async () => {
@@ -15,7 +16,7 @@ export const authManagementAPIs = {
             return response.data;
         } catch (error) {
 
-            throw new Error(error?.response?.data?.message || "Failed to logout. Please try again.");
+            throw new Error(getApiErrorMessage(error, "Abmeldung fehlgeschlagen. Bitte versuchen Sie es erneut."));
         }
     },
     userLogin: async (data) => {
@@ -24,7 +25,7 @@ export const authManagementAPIs = {
             return response.data;
         } catch (error) {
 
-            throw new Error(error?.response?.data?.message || "Failed to login. Please try again.");
+            throw new Error(getApiErrorMessage(error, "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut."));
         }
     },
     userLogout: async () => {
@@ -33,7 +34,7 @@ export const authManagementAPIs = {
             return response.data;
         } catch (error) {
 
-            throw new Error(error?.response?.data?.message || "Failed to logout. Please try again.");
+            throw new Error(getApiErrorMessage(error, "Abmeldung fehlgeschlagen. Bitte versuchen Sie es erneut."));
         }
     },
     checkUserAuthStatus: async () => {
@@ -41,8 +42,7 @@ export const authManagementAPIs = {
             const response = await axiosInstance.get("/user/checkAuthStatus");
             return response.data;
         } catch (error) {
-            console.error("User auth check error:", error);
-            throw new Error(error?.response?.data?.message || "Failed to verify user auth.");
+            throw new Error(getApiErrorMessage(error, "Benutzersitzung konnte nicht geprüft werden."));
         }
     },
 
@@ -51,8 +51,7 @@ export const authManagementAPIs = {
             const response = await axiosInstance.get("/admin/checkAuthStatus");
             return response.data;
         } catch (error) {
-            console.error("Admin auth check error:", error);
-            throw new Error(error?.response?.data?.message || "Failed to verify admin auth.");
+            throw new Error(getApiErrorMessage(error, "Administratorsitzung konnte nicht geprüft werden."));
         }
     },
 };

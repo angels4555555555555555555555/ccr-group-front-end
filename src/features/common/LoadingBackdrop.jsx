@@ -3,7 +3,9 @@ import { Loader } from "@mantine/core";
 const LoadingBackdrop = () => {
   return (
     <div
-      className={`h-screen w-screen absolute top-0 left-0 z-[1300] flex justify-center items-center bg-white/30 backdrop-blur-sm`}
+      className="fixed inset-0 z-[1300] flex items-center justify-center bg-white/50 backdrop-blur-sm"
+      role="status"
+      aria-label="Wird geladen"
     >
       <Loader color="#2A85FF" size="md" type="bars" />
     </div>

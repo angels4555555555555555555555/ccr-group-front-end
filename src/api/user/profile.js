@@ -1,4 +1,5 @@
 import axiosInstance from "@/utils/axiosInstance";
+import { getApiErrorMessage } from "@/utils/apiError";
 
 export const userProfileAPIs = {
   /** Get User Profile */
@@ -6,21 +7,10 @@ export const userProfileAPIs = {
     try {
       const response = await axiosInstance.get("/user/getProfile");
 
-      const updatedResponse = {
-        ...response.data,
-        user: {
-          ...response.data.user,
-          totalShareValue:
-            response?.data?.user?.shares * response?.data?.user?.klarnaPrice,
-        },
-      };
-
-      return updatedResponse;
+      return response.data;
     } catch (error) {
-      console.error("Get profile error:", error);
       throw new Error(
-        error?.response?.data?.message ||
-          "Failed to fetch user profile. Please try again."
+        getApiErrorMessage(error, "Benutzerprofil konnte nicht geladen werden.")
       );
     }
   },
@@ -42,10 +32,18 @@ export const userProfileAPIs = {
       );
       return response.data;
     } catch (error) {
-      console.error("Update profile picture error:", error);
       throw new Error(
-        error?.response?.data?.message ||
-          "Failed to update profile picture. Please try again."
+        getApiErrorMessage(error, "Profilbild konnte nicht aktualisiert werden.")
+      );
+    }
+  },
+  updatePassword: async (data) => {
+    try {
+      const response = await axiosInstance.put("/user/updatePassword", data);
+      return response.data;
+    } catch (error) {
+      throw new Error(
+        getApiErrorMessage(error, "Passwort konnte nicht aktualisiert werden.")
       );
     }
   },

@@ -1,243 +1,47 @@
 "use client";
 
-import React from "react";
-import {
-  Modal,
-  Button,
-  TextInput,
-  PasswordInput,
-  NumberInput,
-  Select,
-} from "@mantine/core";
-import { DateInput } from "@mantine/dates";
+import { Button, Modal } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import COUNTRIES from "./CountryList";
 import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import LoadingBackdrop from "@/features/common/LoadingBackdrop";
 import { useAddNewUser } from "@/hooks/admin/userManagement";
+import UserFormFields from "./UserFormFields";
+import { EMPTY_USER_FORM, toUserPayload, validateUserForm } from "./userForm";
 
-const AddNewUserModal = ({ opened, onClose }) => {
-  const form = useForm({
-    initialValues: {
-      firstName: "",
-      lastName: "",
-      dob: null,
-      gender: "",
-      country: "",
-      shares: "",
-      klarnaPurchasePrice: "",
-      klarnaPrice: "",
-      email: "",
-      password: "",
-      bank: "",
-      laufzeit: "",
-      betrag: "",
-      zinsatz: "",
-    },
-    validate: {
-      firstName: (v) => (v.trim().length ? null : "Vorname ist erforderlich"),
-      lastName: (v) => (v.trim().length ? null : "Nachname ist erforderlich"),
-      dob: (v) => {
-        if (!v) return "Geburtsdatum ist erforderlich";
-        const today = new Date();
-        if (v > today) return "Geburtsdatum darf nicht in der Zukunft liegen";
-        return null;
-      },
-      gender: (v) => (v ? null : "Geschlecht auswählen"),
-      country: (v) => (v ? null : "Land auswählen"),
-      shares: (v) => {
-        if (v === "" || v === null) return null; // Optional field
-        const n = Number(v);
-        if (!Number.isFinite(n) || n < 0)
-          return "Geben Sie eine gültige, nicht-negative Zahl ein";
-        return null;
-      },
-      klarnaPurchasePrice: (v) => {
-        if (v === "" || v === null) return null; // Optional field
-        const n = Number(v);
-        if (!Number.isFinite(n) || n < 0)
-          return "Geben Sie einen gültigen Kaufpreis ein";
-        return null;
-      },
-      klarnaPrice: (v) => {
-        if (v === "" || v === null) return null; // Optional field
-        const n = Number(v);
-        if (!Number.isFinite(n) || n < 0)
-          return "Geben Sie einen gültigen SpaceX-Preis ein";
-        return null;
-      },
-      email: (v) =>
-        /^\S+@\S+\.\S+$/.test(v) ? null : "Ungültige E-Mail-Adresse",
-      password: (v) =>
-        v.length >= 8 ? null : "Passwort muss mindestens 8 Zeichen lang sein",
-    },
-  });
-
+export default function AddNewUserModal({ opened, onClose }) {
   const queryClient = useQueryClient();
-
+  const form = useForm({
+    initialValues: structuredClone(EMPTY_USER_FORM),
+    validate: (values) => validateUserForm(values, { includeCredentials: true }),
+  });
   const { mutate, isPending } = useAddNewUser(() => {
-    onClose();
+    queryClient.invalidateQueries({ queryKey: ["usersList"] });
     form.reset();
-    queryClient.invalidateQueries(["usersList"]);
+    onClose();
   });
 
-  const handleSubmit = React.useCallback((values) => {
-    const normalizedValues = {
-      ...values,
-      email: values.email.toLowerCase(),
-    };
-    requestAnimationFrame(() => {
-      mutate(normalizedValues);
-    });
-  }, [mutate]);
-
-  const handleClose = React.useCallback(() => {
+  const close = () => {
+    form.reset();
     onClose();
-  }, [onClose]);
+  };
 
   return (
     <>
       {isPending && <LoadingBackdrop />}
-      <Modal
-        opened={opened}
-        onClose={handleClose}
-        title="Neuen Benutzer hinzufügen"
-        centered
-      >
+      <Modal opened={opened} onClose={close} title="Neuen Benutzer hinzufügen" centered size="xl">
         <form
-          onSubmit={form.onSubmit(handleSubmit)}
-          className="p-4 gap-4 grid md:grid-cols-2"
+          onSubmit={form.onSubmit(
+            (values) => mutate(toUserPayload(values, { includeCredentials: true })),
+            () => toast.error("Bitte füllen Sie alle Pflichtfelder aus.")
+          )}
+          className="grid gap-4 p-2 md:grid-cols-2"
         >
-          <TextInput
-            label="Vorname"
-            placeholder="Vorname eingeben"
-            withAsterisk
-            {...form.getInputProps("firstName")}
-          />
-          <TextInput
-            label="Nachname"
-            placeholder="Nachname eingeben"
-            withAsterisk
-            {...form.getInputProps("lastName")}
-          />
-          <DateInput
-            label="Geburtsdatum"
-            placeholder="MM-TT-JJJJ"
-            withAsterisk
-            valueFormat="MM-DD-YYYY"
-            maxDate={new Date()}
-            {...form.getInputProps("dob")}
-          />
-          <Select
-            label="Geschlecht"
-            placeholder="Geschlecht auswählen"
-            withAsterisk
-            data={["Männlich", "Weiblich", "Divers"]}
-            searchable
-            nothingFoundMessage="Keine Optionen gefunden"
-            {...form.getInputProps("gender")}
-          />
-          <Select
-            label="Land"
-            placeholder="Land auswählen"
-            withAsterisk
-            data={COUNTRIES}
-            searchable
-            nothingFoundMessage="Keine Ergebnisse"
-            {...form.getInputProps("country")}
-          />
-          <NumberInput
-            label="SpaceX-Aktien (Optional)"
-            placeholder="Anzahl der Aktien eingeben"
-            hideControls
-            min={0}
-            {...form.getInputProps("shares")}
-          />
-          <NumberInput
-            label="Kaufpreis SpaceX (Optional)"
-            placeholder="Kaufpreis eingeben"
-            hideControls
-            min={0}
-            {...form.getInputProps("klarnaPurchasePrice")}
-          />
-          <NumberInput
-            label="SpaceX-Preis (Optional)"
-            placeholder="SpaceX-Preis eingeben"
-            hideControls
-            min={0}
-            {...form.getInputProps("klarnaPrice")}
-          />
-          <TextInput
-            label="E-Mail"
-            placeholder="Benutzer-E-Mail eingeben"
-            withAsterisk
-            styles={{ input: { textTransform: "lowercase" } }}
-            {...form.getInputProps("email")}
-            onChange={(e) =>
-              form.setFieldValue("email", e.currentTarget.value.toLowerCase())
-            }
-          />
-          <PasswordInput
-            label="Passwort"
-            placeholder="Neues Passwort erstellen"
-            withAsterisk
-            {...form.getInputProps("password")}
-          />
-
-          {/* Tagesgeld Section */}
-          <div className="col-span-2 mt-4 mb-2">
-            <h3 className="text-[16px] font-semibold text-[#191919] border-b pb-2">
-              Tagesgeld-Informationen
-            </h3>
-          </div>
-          
-          <TextInput
-            label="Bank (Optional)"
-            placeholder="z.B. Deutsche Bank"
-            {...form.getInputProps("bank")}
-          />
-          <TextInput
-            label="Laufzeit (Duration) (Optional)"
-            placeholder="z.B. 12"
-            rightSection={<span className="text-gray-500 text-sm"></span>}
-            rightSectionPointerEvents="none"
-            {...form.getInputProps("laufzeit")}
-          />
-          <TextInput
-            label="Betrag (Amount) (Optional)"
-            placeholder="z.B. 5000"
-            rightSection={<span className="text-gray-500 text-sm">€</span>}
-            rightSectionPointerEvents="none"
-            {...form.getInputProps("betrag")}
-          />
-          <TextInput
-            label="Zinsatz (Interest Rate) (Optional)"
-            placeholder="z.B. 3.5"
-            rightSection={<span className="text-gray-500 text-sm">%</span>}
-            rightSectionPointerEvents="none"
-            {...form.getInputProps("zinsatz")}
-          />
-
-          <Button
-            unstyled
-            type="submit"
-            className="h-[50px] bg-black hover:bg-black/90 text-white cursor-pointer"
-          >
-            Speichern
-          </Button>
-          <Button
-            unstyled
-            type="button"
-            variant="outline"
-            className="h-[50px] bg-transparent text-[#111827] border border-[#E7E7E7]"
-            onClick={handleClose}
-          >
-            Abbrechen
-          </Button>
+          <UserFormFields form={form} includeCredentials />
+          <Button type="submit" color="dark" loading={isPending}>Speichern</Button>
+          <Button type="button" variant="outline" color="dark" onClick={close}>Abbrechen</Button>
         </form>
       </Modal>
     </>
   );
-};
-
-export default AddNewUserModal;
+}

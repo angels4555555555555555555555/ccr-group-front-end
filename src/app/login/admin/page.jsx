@@ -25,10 +25,7 @@ export default function AdminLoginPage() {
         /^\S+@\S+\.\S+$/.test(value)
           ? null
           : "Bitte geben Sie eine gültige E-Mail-Adresse ein",
-      password: (value) =>
-        value.trim().length >= 6
-          ? null
-          : "Das Passwort muss mindestens 6 Zeichen lang sein",
+      password: (value) => value ? null : "Passwort ist erforderlich",
     },
   });
   const { mutate, isPending } = useAdminLogin(() => {
