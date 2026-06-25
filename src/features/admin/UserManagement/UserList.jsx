@@ -6,8 +6,21 @@ import MentineMenu from "@/features/common/MentineMenu";
 import { useDeleteUser, useRevealPassword } from "@/hooks/admin/userManagement";
 import { useQueryClient } from "@tanstack/react-query";
 import LoadingBackdrop from "@/features/common/LoadingBackdrop";
-const PRODUCT_LABELS = { festgeld: "Festgeld", tagesgeld: "Tagesgeld", openAI: "OpenAI" };
-const productNames = (products = []) => products.map((product) => PRODUCT_LABELS[product] || product).join(", ") || "–";
+const EMPTY_VALUE = "-";
+const CURRENCY_FORMATTER = new Intl.NumberFormat("de-DE", {
+  style: "currency",
+  currency: "EUR",
+  minimumFractionDigits: 2,
+});
+
+const productAmount = (row, product, field) => {
+  if (!row.products?.includes(product)) return EMPTY_VALUE;
+  const amount = row[product]?.[field];
+  if (amount === null || amount === undefined || amount === "") return EMPTY_VALUE;
+  const value = Number(amount);
+  return Number.isFinite(value) ? CURRENCY_FORMATTER.format(value) : EMPTY_VALUE;
+};
+
 const UserList = ({
   data,
   setCurrentUser,
@@ -75,14 +88,14 @@ const UserList = ({
   return (
     <>
       {(isPending || isRevealingPassword) && <LoadingBackdrop />}
-      <div className="w-full overflow-hidden rounded-md border border-[#E2E8F0] bg-white">
+      <div className="w-full overflow-x-auto rounded-md border border-[#D8DEE8] bg-white">
         {/* Kopfzeile */}
         {!isTabletOrMobile ? (
-          <div className="grid grid-cols-10 items-center h-[64px] px-4 text-[#94A3B8] text-[14px] font-semibold bg-[#F4F4F7]">
-            <div className="col-span-1 flex items-center">
+          <div className="grid min-w-[1120px] grid-cols-[64px_minmax(180px,1.2fr)_minmax(230px,1.2fr)_minmax(220px,1.75fr)_minmax(140px,0.9fr)_minmax(150px,0.9fr)_minmax(130px,0.8fr)_48px] items-center h-20 bg-[#F4F4F5] text-[14px] font-bold uppercase tracking-[0.14em] text-[#3B4263]">
+            <div className="flex items-center justify-center">
               <input
                 type="checkbox"
-                className="size-4 accent-black"
+                className="size-5 accent-black"
                 checked={allSelected}
                 onChange={(e) => toggleAll(e.target.checked)}
                 ref={(el) => {
@@ -92,12 +105,13 @@ const UserList = ({
               />
             </div>
 
-            <div className="col-span-2">Name</div>
-            <div className="col-span-2">E-Mail</div>
-            <div className="col-span-1">Geschlecht</div>
-            <div className="col-span-1">Land</div>
-            <div className="col-span-2">Produkte</div>
-            <div className="col-span-1">
+            <div className="px-4">Name</div>
+            <div className="px-4">E-Mail</div>
+            <div className="px-4">Land</div>
+            <div className="px-4 text-right">Festgeld</div>
+            <div className="px-4 text-right">Tagesgeld</div>
+            <div className="px-4 text-right">OpenAI</div>
+            <div>
               <div className="flex justify-center">
                 <MentineMenu items={bulkMenuItems} ariaLabel="Sammelaktionen" />
               </div>
@@ -127,7 +141,7 @@ const UserList = ({
         <div className="overflow-y-auto lg:max-h-[calc(100dvh-420px)] md:max-h-[calc(100dvh-400px)] max-h-[calc(100dvh-480px)]">
           {isTabletOrMobile ? (
             <div className="grid md:grid-cols-2 gap-4 p-4">
-              {data?.users.map((row, idx) => {
+              {data?.users.map((row) => {
                 const isChecked = selected.has(row._id);
                 return (
                   <div
@@ -166,18 +180,23 @@ const UserList = ({
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <span className="text-[#64748B]">Geschlecht</span>
-                        <span className="font-medium">{row.gender}</span>
-                      </div>
-
-                      <div className="flex items-center justify-between">
                         <span className="text-[#64748B]">Land</span>
                         <span className="font-semibold">{row.country}</span>
                       </div>
 
-                      <div className="flex items-start justify-between gap-4">
-                        <span className="text-[#64748B]">Produkte</span>
-                        <span className="text-right font-semibold">{productNames(row.products)}</span>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[#64748B]">Festgeld</span>
+                        <span className="font-medium">{productAmount(row, "festgeld", "betrag")}</span>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <span className="text-[#64748B]">Tagesgeld</span>
+                        <span className="font-medium">{productAmount(row, "tagesgeld", "betrag")}</span>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <span className="text-[#64748B]">OpenAI</span>
+                        <span className="font-medium">{productAmount(row, "openAI", "investition")}</span>
                       </div>
                     </div>
                   </div>
@@ -191,31 +210,32 @@ const UserList = ({
                 return (
                   <div
                     key={row._id}
-                    className={`grid grid-cols-10 items-center px-4 h-[64px] text-[14px] ${
+                    className={`grid min-w-[1120px] grid-cols-[64px_minmax(180px,1.2fr)_minmax(230px,1.2fr)_minmax(220px,1.75fr)_minmax(140px,0.9fr)_minmax(150px,0.9fr)_minmax(130px,0.8fr)_48px] items-center h-20 text-[18px] text-[#020B2D] ${
                       idx !== data.users.length - 1
                         ? "border-b border-[#E2E8F0]"
                         : ""
                     } hover:bg-[#F8FAFC]`}
                   >
-                    <div className="col-span-1 flex items-center">
+                    <div className="flex items-center justify-center">
                       <input
                         type="checkbox"
-                        className="size-4 accent-black"
+                        className="size-5 accent-black"
                         checked={isChecked}
                         onChange={() => toggleOne(row._id)}
                         aria-label={`Auswählen: ${row.firstName} ${row.lastName}`}
                       />
                     </div>
-                    <div className="col-span-2 truncate">
+                    <div className="truncate px-4 font-semibold">
                       {row.firstName} {row.lastName}
                     </div>
-                    <div className="col-span-2 truncate text-[#334155]">
+                    <div className="truncate px-4 text-[#4A526C]">
                       {row.email}
                     </div>
-                    <div className="col-span-1">{row.gender}</div>
-                    <div className="col-span-1">{row.country}</div>
-                    <div className="col-span-2 truncate font-medium">{productNames(row.products)}</div>
-                    <div className="col-span-1">
+                    <div className="truncate px-4">{row.country}</div>
+                    <div className="px-4 text-right font-medium">{productAmount(row, "festgeld", "betrag")}</div>
+                    <div className="px-4 text-right font-medium">{productAmount(row, "tagesgeld", "betrag")}</div>
+                    <div className="px-4 text-right font-medium">{productAmount(row, "openAI", "investition")}</div>
+                    <div>
                       <div className="flex justify-center">
                         <MentineMenu
                           items={rowMenuItems(row._id)}
